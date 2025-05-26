@@ -13,7 +13,7 @@ async def subscribe(app, message):
         try:
           user = await app.get_chat_member(FORCE_SUB, message.from_user.id)
           if str(user.status) == "ChatMemberStatus.BANNED":
-              await message.reply_text("You are Banned. Contact -- Team SPY")
+              await message.reply_text("Bạn đã bị cấm. Liên hệ -- TEAM SKY")
               return 1
         except UserNotParticipant:
             link = await app.export_chat_invite_link(FORCE_SUB)
@@ -21,7 +21,7 @@ async def subscribe(app, message):
             await message.reply_photo(photo="https://graph.org/file/d44f024a08ded19452152.jpg",caption=caption, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Join Now...", url=f"{link}")]]))
             return 1
         except Exception as ggn:
-            await message.reply_text(f"Something Went Wrong. Contact admins... with following message {ggn}")
+            await message.reply_text(f"Có gì đó không ổn. Liên hệ với quản trị viên... với thông báo sau {ggn}")
             return 1 
      
 @app.on_message(filters.command("set"))
@@ -31,27 +31,27 @@ async def set(_, message):
         return
      
     await app.set_bot_commands([
-        BotCommand("start", "🚀 Start the bot"),
-        BotCommand("batch", "🫠 Extract in bulk"),
-        BotCommand("login", "🔑 Get into the bot"),
-        BotCommand("setbot", "🧸 Add your bot for handling files"),
-        BotCommand("logout", "🚪 Get out of the bot"),
-        BotCommand("adl", "👻 Download audio from 30+ sites"),
-        BotCommand("dl", "💀 Download videos from 30+ sites"),
-        BotCommand("status", "⟳ Refresh Payment status"),
-        BotCommand("transfer", "💘 Gift premium to others"),
-        BotCommand("add", "➕ Add user to premium"),
-        BotCommand("rem", "➖ Remove from premium"),
-        BotCommand("rembot", "🤨 Remove your custom bot"),
-        BotCommand("settings", "⚙️ Personalize things"),
-        BotCommand("plan", "🗓️ Check our premium plans"),
-        BotCommand("terms", "🥺 Terms and conditions"),
-        BotCommand("help", "❓ If you're a noob, still!"),
-        BotCommand("cancel", "🚫 Cancel login/batch/settings process"),
-        BotCommand("stop", "🚫 Cancel batch process")
+        BotCommand("start", "🚀 Bắt đầu sử dụng bot"),
+        BotCommand("batch", "🫠 Trích xuất hàng loạt"),
+        BotCommand("login", "🔑 Đăng nhập vào bot"),
+        BotCommand("setbot", "🤖 Thêm bot của bạn để xử lý tệp"),
+        BotCommand("logout", "🚪 Đăng xuất khỏi bot"),
+        BotCommand("adl", "🔊 Tải âm thanh từ hơn 30 trang web"),
+        BotCommand("dl", "🎦 Tải video từ hơn 30 trang web"),
+        BotCommand("status", "⟳ Cập nhật trạng thái thanh toán"),
+        BotCommand("transfer", "🎁 Tặng premium cho người khác"),
+        BotCommand("add", "➕ Thêm người dùng vào premium"),
+        BotCommand("rem", "➖ Xóa người dùng khỏi premium"),
+        BotCommand("rembot", "❌ Xóa bot tuỳ chỉnh của bạn"),
+        BotCommand("settings", "⚙️ Cá nhân hoá các thiết lập"),
+        BotCommand("plan", "🔎 Xem các gói premium"),
+        BotCommand("terms", "📝 Điều khoản và điều kiện"),
+        BotCommand("help", "❓ Hướng dẫn người dùng"),
+        BotCommand("cancel", "⛔️ Huỷ quá trình đăng nhập/hàng loạt/cài đặt"),
+        BotCommand("stop", "🚫 Huỷ quá trình hàng loạt")
     ])
  
-    await message.reply("✅ Commands configured successfully!")
+    await message.reply("✅ Cấu hình lệnh thành công!")
  
  
  
@@ -70,9 +70,9 @@ help_pages = [
         "5. **/lock**\n"
         "> Lock channel from extraction (Owner only)\n\n"
         "6. **/dl link**\n"
-        "> Download videos (Not available in v3 if you are using)\n\n"
+        "> Download videos (Not available if you are using)\n\n"
         "7. **/adl link**\n"
-        "> Download audio (Not available in v3 if you are using)\n\n"
+        "> Download audio (Not available if you are using)\n\n"
         "8. **/login**\n"
         "> Log into the bot for private channel access\n\n"
         "9. **/batch**\n"
@@ -103,7 +103,7 @@ help_pages = [
         "> 4. REPLACEWORDS : Can be used for words in deleted set via REMOVE WORDS\n"
         "> 5. RESET : To set the things back to default\n\n"
         "> You can set CUSTOM THUMBNAIL, PDF WATERMARK, VIDEO WATERMARK, SESSION-based login, etc. from settings\n\n"
-        "**__Powered by Team SPY__**"
+        "**__LIÊN HỆ HỖ TRỢ @ULTIMATESMMHELP__**"
     )
 ]
  
@@ -171,7 +171,7 @@ async def terms(client, message):
     buttons = InlineKeyboardMarkup(
         [
             [InlineKeyboardButton("📋 See Plans", callback_data="see_plan")],
-            [InlineKeyboardButton("💬 Contact Now", url="https://t.me/kingofpatal")],
+            [InlineKeyboardButton("💬 Contact Now", url="https://t.me/ULTIMATESMMHELP")],
         ]
     )
     await message.reply_text(terms_text, reply_markup=buttons)
@@ -190,7 +190,7 @@ async def plan(client, message):
     buttons = InlineKeyboardMarkup(
         [
             [InlineKeyboardButton("📜 See Terms", callback_data="see_terms")],
-            [InlineKeyboardButton("💬 Contact Now", url="https://t.me/kingofpatal")],
+            [InlineKeyboardButton("💬 Contact Now", url="https://t.me/ULTIMATESMMHELP")],
         ]
     )
     await message.reply_text(plan_text, reply_markup=buttons)
@@ -209,7 +209,7 @@ async def see_plan(client, callback_query):
     buttons = InlineKeyboardMarkup(
         [
             [InlineKeyboardButton("📜 See Terms", callback_data="see_terms")],
-            [InlineKeyboardButton("💬 Contact Now", url="https://t.me/kingofpatal")],
+            [InlineKeyboardButton("💬 Contact Now", url="https://t.me/ULTIMATESMMHELP")],
         ]
     )
     await callback_query.message.edit_text(plan_text, reply_markup=buttons)
@@ -227,7 +227,7 @@ async def see_terms(client, callback_query):
     buttons = InlineKeyboardMarkup(
         [
             [InlineKeyboardButton("📋 See Plans", callback_data="see_plan")],
-            [InlineKeyboardButton("💬 Contact Now", url="https://t.me/kingofpatal")],
+            [InlineKeyboardButton("💬 Contact Now", url="https://t.me/ULTIMATESMMHELP")],
         ]
     )
     await callback_query.message.edit_text(terms_text, reply_markup=buttons)

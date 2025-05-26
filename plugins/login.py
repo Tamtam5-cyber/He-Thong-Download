@@ -15,7 +15,7 @@ from plugins.batch import UB, UC
 from utils.custom_filters import login_in_progress, set_user_step, get_user_step
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
-model = "v3saver Team SPY"
+model = "TEAM SKY"
 
 STEP_PHONE = 1
 STEP_CODE = 2
@@ -57,7 +57,7 @@ async def set_bot_token(C, m):
             del UB[user_id]  # Remove from dictionary
 
     if len(args) < 2:
-        await m.reply_text("⚠️ Please provide a bot token. Usage: `/setbto token`", quote=True)
+        await m.reply_text("⚠️ Please provide a bot token. Usage: `/setbot token`", quote=True)
         return
 
     bot_token = args[1].strip()

@@ -1,7 +1,3 @@
-# Copyright (c) 2025 devgagan : https://github.com/devgaganin.  
-# Licensed under the GNU General Public License v3.0.  
-# See LICENSE file in the repository root for full license text.
-
 import os, re, time, asyncio, json, asyncio 
 from pyrogram import Client, filters
 from pyrogram.types import Message
@@ -15,7 +11,6 @@ from plugins.start import subscribe as sub
 from utils.custom_filters import login_in_progress
 from utils.encrypt import dcs
 from typing import Dict, Any, Optional
-
 
 Y = None if not STRING else __import__('shared_client').userbot
 Z, P, UB, UC, emp = {}, {}, {}, {}, {}
@@ -149,7 +144,7 @@ async def get_uclient(uid):
     if xxx:
         try:
             ss = dcs(xxx)
-            gg = Client(f'{uid}_client', api_id=API_ID, api_hash=API_HASH, device_model="v3saver", session_string=ss)
+            gg = Client(f'{uid}_client', api_id=API_ID, api_hash=API_HASH, device_model="SkyOi", session_string=ss)
             await gg.start()
             await upd_dlg(gg)
             UC[uid] = gg
@@ -334,7 +329,7 @@ async def process_cmd(c, m):
     cmd = m.command[0]
     
     if FREEMIUM_LIMIT == 0 and not await is_premium_user(uid):
-        await m.reply_text("This bot does not provide free servies, get subscription from OWNER")
+        await m.reply_text("This bot does not provide free services, get subscription from OWNER")
         return
     
     if await sub(c, m) == 1: return
@@ -347,6 +342,7 @@ async def process_cmd(c, m):
     ubot = await get_ubot(uid)
     if not ubot:
         await pro.edit('Add your bot with /setbot first')
+        Z.pop(uid, None)
         return
     
     Z[uid] = {'step': 'start' if cmd == 'batch' else 'start_single'}
@@ -458,11 +454,10 @@ async def text_handler(c, m):
             "success": 0,
             "cancel_requested": False,
             "progress_message_id": pt.id
-            })
+        })
         
         try:
             for j in range(n):
-                
                 if should_cancel(uid):
                     await pt.edit(f'Cancelled at {j}/{n}. Success: {success}')
                     break
@@ -491,3 +486,7 @@ async def text_handler(c, m):
         finally:
             await remove_active_batch(uid)
             Z.pop(uid, None)
+
+# Hàm khởi tạo plugin
+async def run_batch_plugin():
+    print("Batch plugin initialized successfully")

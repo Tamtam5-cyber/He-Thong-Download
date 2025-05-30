@@ -1,7 +1,3 @@
-# Copyright (c) 2025 devgagan : https://github.com/devgaganin.  
-# Licensed under the GNU General Public License v3.0.  
-# See LICENSE file in the repository root for full license text.
-
 from shared_client import app
 from pyrogram import filters
 from pyrogram.errors import UserNotParticipant
@@ -231,5 +227,4 @@ async def see_terms(client, callback_query):
         ]
     )
     await callback_query.message.edit_text(terms_text, reply_markup=buttons)
- 
  
